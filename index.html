@@ -15,15 +15,21 @@
     <div class="bg pontuacao">
       <div>
         <p class="name">Jogador</p>
+        <div class="player">
+          <img style="transform: scaleX(-1);" :src="player1" alt="">
+        </div>
         <div class="life-bar">
           <div id="life" class="life " :class="{danger: life1 < 20}" 
           :style="{width: life1 + '%'}"></div>
         </div>
         <span>{{ life1 }}%</span>
       </div>
-
+      <Span style="font-weight: 600;">VS</Span>
       <div>
-        <p class="name">Monstro</p>
+        <p class="name">Jogador2</p>
+        <div class="player">
+          <img :src="player2" alt="">
+        </div>
         <div class="life-bar">
           <div id="life" class="life" :class="{danger: life2 < 20}" 
           :style="{width: life2 + '%'}"></div>
@@ -32,7 +38,7 @@
       </div>
     </div>
 
-    <div v-if="resultado" class="bg result">
+    <div v-if="verifica()" class="bg result">
         <p v-if="life2 == 0" class="win">
           Você ganhou! :)
         </p>

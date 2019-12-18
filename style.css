@@ -103,7 +103,6 @@ html {
 
 .dt {
   background-color: #8b8888;
-  color: #000;
 }
 
 .logs {
@@ -131,4 +130,7 @@ ul {
   border-radius: 3px;
   max-width: 500px;
   width: 100%;
+}
+.player {
+  height: 60px;
 }

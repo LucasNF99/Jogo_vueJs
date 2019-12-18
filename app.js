@@ -5,10 +5,12 @@ new Vue ({
     life1: 100,
     life2: 100,
     logs: [],
+    player1: 'img/s-1.png',
+    player2: 'img/z-1.png',
   },
   computed: {
     resultado() {
-      return this.life1 == 0 || this.life2 == 0
+      return this.life1 == 0 || this.life2 == 0;
     },
     // ataqueMon() {
 
@@ -20,12 +22,15 @@ new Vue ({
       this.life1 = 100;
       this.life2 = 100;
       this.logs = [];
+      this.player1 = 'img/s-1.png';
+      this.player2 = 'img/z-1.png';
     },
-    ataque(especial) {    
+    ataque(especial) { 
       this.dano('life2', 5, 10, especial, 'Jogador', 'Monstro', 'jogador' );
       if(this.life2 > 0) {
         this.dano('life1', 7, 12, false, 'Monstro', 'Jogador', 'monstro');
       }
+      this.mudarImg();
     },
     dano(atributo, min, max, especial, fonte, alvo, clas) {
       const maiorDano = especial ? 5 : 0;
@@ -49,12 +54,28 @@ new Vue ({
     },
     registrarLog(text, clas) {
       this.logs.unshift({text, clas});
-
+    },
+    mudarImg() {
+      this.player1 = 'img/s-2.png';
+      this.player2 = 'img/z-2.png';
+      setTimeout(() => {
+        this.player1 = 'img/s-1.png';
+        this.player2 = 'img/z-1.png';
+      }, 350);
+    },
+    verifica() {
+      if(this.life1 == 0) {
+        this.player1 = 'img/s-3.png';
+        return this.life1 == 0
+      } else if (this.life2 == 0) {
+        this.player2 = 'img/z-3.png';
+        return this.life2 == 0;
+      }
     }
   },
   watch: {
     resultado(value) {
-      if (value) this.rodando = false; 
+      if (value) this.rodando = false;
     }
   }
 })
