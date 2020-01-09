@@ -12,9 +12,6 @@ new Vue ({
     resultado() {
       return this.life1 == 0 || this.life2 == 0;
     },
-    // ataqueMon() {
-
-    // }
   },
   methods: {
     comecaJogo() {
@@ -24,6 +21,7 @@ new Vue ({
       this.logs = [];
       this.player1 = 'img/s-1.png';
       this.player2 = 'img/z-1.png';
+      this.ataqueMon(); 
     },
     ataque(especial) { 
       this.dano('life2', 5, 10, especial, 'Jogador', 'Monstro', 'jogador' );
@@ -31,6 +29,13 @@ new Vue ({
         this.dano('life1', 7, 12, false, 'Monstro', 'Jogador', 'monstro');
       }
       this.mudarImg();
+    },
+    ataqueMon() {
+      while (this.life1 <= 0) {
+        setTimeout(()=>{
+          this.dano('life1', 7, 12, false, 'Monstro', 'Jogador', 'monstro');
+        }, 200);
+      }
     },
     dano(atributo, min, max, especial, fonte, alvo, clas) {
       const maiorDano = especial ? 5 : 0;

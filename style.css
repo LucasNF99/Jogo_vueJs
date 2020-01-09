@@ -6,6 +6,10 @@ html {
   flex-direction: column;
 }
 
+h3 {
+  text-align: center;
+}
+
 .bg {
   margin: 10px;
   padding: 20px;
@@ -133,4 +137,11 @@ ul {
 }
 .player {
   height: 60px;
+}
+
+.selecao {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  overflow: hidden;
 }

@@ -9,9 +9,17 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body >
+<body>
 
   <div id="app">
+    <div class="selecao">
+      <div>
+        <h2>Escolha seu personagem!</h2>
+        <img src="img/s-1.png" alt="">
+        <h3>Sanji</h3>
+        <button>Escolher</button>
+      </div>
+    </div>
     <div class="bg pontuacao">
       <div>
         <p class="name">Jogador</p>
@@ -24,7 +32,7 @@
         </div>
         <span>{{ life1 }}%</span>
       </div>
-      <Span style="font-weight: 600;">VS</Span>
+      <span style="font-weight: 600;">VS</span>
       <div>
         <p class="name">Jogador2</p>
         <div class="player">
@@ -40,14 +48,14 @@
 
     <div v-if="verifica()" class="bg result">
         <p v-if="life2 == 0" class="win">
-          Você ganhou! :)
+          Você ganhou! 😄
         </p>
         <p v-else class="lose">
-          Você perdeu! :(
+          Você perdeu! 😞
         </p>
     </div>
 
-    <div class=" bg buttons">
+    <section class=" bg buttons">
       <template v-if="rodando">
         <button class="btn ataque" @click="ataque(false)">ATAQUE</button>
         <button class="btn ataque-especial" @click="ataque(true)">ATAQUE ESPECIAL</button>
@@ -55,9 +63,10 @@
         <button @click="rodando = false" class="btn dt">DESISTIR</button>
       </template>
       <button v-else @click="comecaJogo" class="btn novo">INICIAR NOVO JOGO</button>
-    </div>
+    </section>
 
     <div v-if="logs.length" class=" bg logs">
+      <h3>Historico</h3>
       <ul>
         <li v-for="log in logs" :class="log.clas" class="log">
           {{ log.text }}
